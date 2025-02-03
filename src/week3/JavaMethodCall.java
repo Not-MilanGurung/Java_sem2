@@ -19,6 +19,9 @@ public class JavaMethodCall {
 		for (int i : arr) {
 			System.out.println(i);
 		}
+
+		JavaMethods test = new JavaMethods();
+		test.printName();
 	}
 
 }

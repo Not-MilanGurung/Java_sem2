@@ -8,7 +8,9 @@ package week5.breo;
  * </ul>
  */
 public class SinglyLinkedLists {
+    /** Head node of the Linked List object */
     public Node head;
+    /** Last node of the Linked List object */
     public Node last;
     /**
      * Node class for the linked list. Has attribute:
@@ -28,15 +30,15 @@ public class SinglyLinkedLists {
     }
     /**
      * Constructs a object with data for the head node
-     * @param firstData
+     * @param firstData Data for the first node
      */
     public SinglyLinkedLists(int firstData){
         this.head = new Node(firstData);
         this.last = this.head;
     }
     /**
-     * Inserts a new node with the data at the end
-     * @param data
+     * Inserts a new node at the end
+     * @param data Data of the new node
      */
     public void append(int data){
         Node newNode = new Node(data);
@@ -46,8 +48,8 @@ public class SinglyLinkedLists {
     }
 
     /**
-     * Inserts a new node with the data at the beginning
-     * @param data
+     * Inserts a new node at the beginning
+     * @param data Data of the new node
      */
     public void insertAtStart(int data){
         Node newNode = new Node(data);
@@ -150,7 +152,7 @@ public class SinglyLinkedLists {
 
     /**
      * Testing out the methods of {@link SinglyLinkedLists}
-     * @param args
+     * @param args Default main function args
      */
     public static void main(String[] args) {
         SinglyLinkedLists marks = new SinglyLinkedLists(43);

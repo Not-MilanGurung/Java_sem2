@@ -16,4 +16,10 @@ public class JavaMethods {
 		area = Math.PI * Math.pow(radius, 2.0);		
 		return area;
 	}
+
+	private String name;
+
+	public void printName(){
+		System.out.println("Hello, my name is "+this.name);
+	}
 }
