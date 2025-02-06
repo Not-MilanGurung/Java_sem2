@@ -1,13 +1,13 @@
-package week3;
+package week2;
 import java.util.Scanner;
-public class Day1 {
+public class PracticalWeek2 {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		//CheckMinimumAge.run(input);
 		//MaximumOfTwoNumbers.run(input);
-//		ValidatePasswordLength.run(input, 12, 32);
-//		DeterminePassFail.run(input);
+		//ValidatePasswordLength.run(input, 12, 32);
+		//DeterminePassFail.run(input);
 //		OddEven.run(input);
 //		WeekdayOrWeekend.run(input);
 //		DiscoutBasedonMembership.run(input);

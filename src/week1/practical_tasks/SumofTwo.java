@@ -1,4 +1,4 @@
-package week2.practical_tasks;
+package week1.practical_tasks;
 
 public class SumofTwo {
 	static int a, b;

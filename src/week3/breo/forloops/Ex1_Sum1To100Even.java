@@ -1,8 +1,6 @@
 package week3.breo.forloops;
 /**
  * Has a main methods that prints the sum of even numbers from 1 to 100
- * @author Milan Gurung
- * @version 1.0
  */
 public class Ex1_Sum1To100Even {
     /**
