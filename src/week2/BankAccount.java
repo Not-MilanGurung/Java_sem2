@@ -9,13 +9,13 @@ package week2;
  * 
  */
 public class BankAccount {
-	private String accountNumber;
-	private double balance;
+	protected String accountNumber;
+	protected double balance;
 	/**
 	 * Deposits the amount into the account
 	 * @param amount double data type, must be greater than 0
 	 */
-	void deposit(double amount) {
+	protected void deposit(double amount) {
 		if(amount <= 0.0f) {
 			System.out.println("[ERROR]: Error value from deposit amout:" +amount);
 		}
@@ -24,7 +24,7 @@ public class BankAccount {
 	/**
 	 * Prints the values of {@link #balance} and {@link #accountNumber}
 	 */
-	void displayAccountDetails() {
+	protected void displayAccountDetails() {
 		System.out.println("The account no. is "+this.accountNumber);
 		System.out.println("The balance is "+this.balance);
 	}
