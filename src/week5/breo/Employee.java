@@ -2,7 +2,9 @@ package week5.breo;
 
 public class Employee {
     private static int employeeCount = 0;
+    @SuppressWarnings("unused")
     private String name;
+    @SuppressWarnings("unused")
     private int id;
 
     public Employee(String name, int id){
@@ -11,6 +13,7 @@ public class Employee {
         employeeCount++;
     }
 
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         Employee e1 = new Employee("Allen", 1);
         Employee e3 = new Employee("Sharah", 34);

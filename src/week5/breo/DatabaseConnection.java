@@ -5,6 +5,7 @@ public class DatabaseConnection {
         System.out.println("Database connected successfully");
     }
 
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         DatabaseConnection o1 = new DatabaseConnection();
         DatabaseConnection o3 = new DatabaseConnection();

@@ -7,6 +7,7 @@ public class Logger {
         return inst;
     }
 
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         Logger l1 = new Logger();
         Logger l2 = new Logger();
