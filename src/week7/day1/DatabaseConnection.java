@@ -8,6 +8,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import week5.breo.Student;
+
 public class DatabaseConnection {
     Connection con;
     String url = "jdbc:mysql://localhost:3306";
@@ -15,6 +17,18 @@ public class DatabaseConnection {
     String pass = "notmilan";
     String databaseName;
     String table;
+    public class StudentData{
+        public String name;
+        public int age;
+        public String grade;
+
+        public StudentData(String name, int age, String grade){
+            this.name = name;
+            this.age = age;
+            this.grade = grade;
+        }
+    }
+
     public DatabaseConnection(String databaseName, String table){
         this.databaseName = databaseName;
         this.table = table;
@@ -43,20 +57,23 @@ public class DatabaseConnection {
     }
 
     public void createTable() throws SQLException  {
-        Statement stmt = con.createStatement();
-        stmt.execute("CREATE TABLE IF NOT EXISTS "+table+" (id INT PRIMARY KEY AUTO_INCREMENT, "+
+        PreparedStatement stmt = con.prepareStatement("CREATE TABLE IF NOT EXISTS "+table +"(id INT PRIMARY KEY AUTO_INCREMENT, "+
             "name VARCHAR(20), age INT, grade VARCHAR(2))");
+        stmt.execute();
         System.out.println("Table "+table+" created");
         stmt.close();
     }
 
-    public void insertIntoTable(String name, int age, String grade) throws SQLException{
+    public void insertIntoTable(StudentData[] datas) throws SQLException{
         PreparedStatement stmt = con.prepareStatement("INSERT INTO "+table+" (name, age, grade) VALUES(?, ?, ?)");
-        stmt.setString(1, name);
-        stmt.setInt(2, age);
-        stmt.setString(3, grade);
-        stmt.execute();
-        System.out.println("Record added");
+        for (StudentData s : datas){
+            stmt.setString(1, s.name);
+            stmt.setInt(2, s.age);
+            stmt.setString(3, s.grade);
+            stmt.addBatch();
+        }
+        int[] res = stmt.executeBatch();
+        System.out.println(res.length+" records added");
     }
 
     public void updateGrade(int id,String grade) throws SQLException{
@@ -68,8 +85,8 @@ public class DatabaseConnection {
     }
 
     public void printAllRecords() throws SQLException{
-        Statement stmt = con.createStatement();
-        ResultSet res = stmt.executeQuery("SELECT * FROM "+table+" ORDER BY name");
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM "+table);
+        ResultSet res = stmt.executeQuery();
         ResultSetMetaData resMeta = res.getMetaData();
         int column = resMeta.getColumnCount();
         System.out.println("ID\tName\tAge\tGrade");
@@ -97,8 +114,8 @@ public class DatabaseConnection {
     }
 
     public void printNoOfStudents() throws SQLException{
-        Statement stmt = con.createStatement();
-        ResultSet res = stmt.executeQuery("SELECT COUNT(*) FROM "+table);
+        PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) FROM "+table);
+        ResultSet res = stmt.executeQuery();
         res.next();
         System.out.println("Total students: "+res.getString(1));
         stmt.close();
@@ -121,10 +138,13 @@ public class DatabaseConnection {
         try {
             database.createDatabase();
             database.createTable(); 
-
-            database.insertIntoTable("Ram", 22, "B+");
-            database.insertIntoTable("Shyam", 22, "A");
-            database.insertIntoTable("Hari", 21, "C+");
+            StudentData[] test = {
+                database.new StudentData("Ram", 22, "B+"), 
+                database.new StudentData("Shyam", 22, "A"),
+                database.new StudentData("Hari", 21, "C+")
+            };
+            
+            database.insertIntoTable(test);
             database.printAllRecords();
             database.printNoOfStudents();
             
