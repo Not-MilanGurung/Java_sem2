@@ -1,18 +1,22 @@
 package week3.extra;
 import java.util.Scanner;
+
+enum Tr{
+	TRUE, FALSE
+}
 public class PrimeChecker {
     /**
      * Finds if the input number is prime
      * @param num
      * @return True if number is prime, false otherwise
      */
-    static boolean isPrime(int num){
-        if (num == 0 || num == 1) return false;
-        if (num == 2) return true;
+    static Tr isPrime(int num){
+        if (num == 0 || num == 1) return Tr.FALSE;
+        if (num == 2) return Tr.TRUE;
         for(int i = 2; i < num/2; i++){
-            if (num%i == 0) return false;
+            if (num%i == 0) return Tr.FALSE;
         }
-        return true;
+        return Tr.TRUE;
     }
     /**
      * Asks user for a integer input and prints if it is prime or not using {@link #isPrime(int)}
@@ -24,11 +28,11 @@ public class PrimeChecker {
         int num = input.nextInt();
 
         switch (isPrime(num)) {
-            case true:
+            case TRUE:
                 System.out.println(num+" is prime");
                 break;
         
-            case false:
+            case FALSE:
                 System.out.println(num+" is not prime");
         }
 

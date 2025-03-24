@@ -1,6 +1,9 @@
 package week3.extra;
 import java.util.Scanner;
 
+enum bool{
+	TRUE, FALSE
+}
 public class SimpleQuiz {
     public static void main(String[] args) {
         try{
@@ -26,8 +29,10 @@ public class SimpleQuiz {
                 System.out.println(quiz[i][j+1]);
             }
             System.out.print("Answer: ");
-            switch (con.next().equals(quiz[i][4])) {
-                case true:
+			bool h = bool.FALSE;
+			if (con.next().equals(quiz[i][4])) h = bool.TRUE;
+            switch (h) {
+                case TRUE:
                     System.out.println("Right answer");
                     break;
                 default:

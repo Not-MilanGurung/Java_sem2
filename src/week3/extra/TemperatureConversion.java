@@ -1,5 +1,9 @@
 package week3.extra;
 import java.util.Scanner;
+
+enum Bool{
+	TRUE, FALSE;
+}
 public class TemperatureConversion {
 
     public static void main(String[] args) {
@@ -32,11 +36,11 @@ public class TemperatureConversion {
                 targetUnit = console.nextInt();
                 switch (targetUnit) {
                     case 1:
-                    resTemp = toFahrenheit(srcTemp, false);
+                    resTemp = toFahrenheit(srcTemp, Bool.FALSE);
                     resUnit = "Fahrenheit";
                     break;
                     case 2:
-                        resTemp = toKelvin(srcTemp, true);
+                        resTemp = toKelvin(srcTemp, Bool.TRUE);
                         resUnit = "Kelvin";
                         break;
                     default:
@@ -51,11 +55,11 @@ public class TemperatureConversion {
                 targetUnit = console.nextInt();
                 switch (targetUnit) {
                     case 1:
-                        resTemp = toCelsius(srcTemp, false);
+                        resTemp = toCelsius(srcTemp, Bool.FALSE);
                         resUnit = "Celsius";
                         break;
                     case 2:
-                        resTemp = toKelvin(srcTemp, false);
+                        resTemp = toKelvin(srcTemp, Bool.FALSE);
                         resUnit = "Kelvin";
                         break;
                     default:
@@ -70,11 +74,11 @@ public class TemperatureConversion {
                 targetUnit = console.nextInt();
                 switch (targetUnit) {
                     case 1:
-                        resTemp = toCelsius(srcTemp, true);
+                        resTemp = toCelsius(srcTemp, Bool.TRUE);
                         resUnit = "Celsius";
                         break;
                     case 2:
-                        resTemp = toFahrenheit(srcTemp, true);
+                        resTemp = toFahrenheit(srcTemp, Bool.TRUE);
                         resUnit = "Fahrenheit";
                         break;
                     default:
@@ -96,9 +100,9 @@ public class TemperatureConversion {
      * @param fromCelsisu True if converting from Celsius, false if converting from Fahrenheit
      * @return Temperature in Kelvin
      */
-    static double toKelvin(double temp, boolean fromCelsius){
+    static double toKelvin(double temp, Bool fromCelsius){
         switch (fromCelsius) {
-            case true:
+            case TRUE:
                 return temp + 273.15;
             default:
                 return (temp - 32.0) * (5.0/9.0) + 273.15;
@@ -110,9 +114,9 @@ public class TemperatureConversion {
      * @param fromKelvin True if converting from Kelvin, false if converting from Fahrenheit
      * @return Temperature in Celsius
      */
-    static double toCelsius(double temp, boolean fromKelvin){
+    static double toCelsius(double temp, Bool fromKelvin){
         switch (fromKelvin) {
-            case true:
+            case TRUE:
                 return temp - 273.15;
             default:
                 return (temp - 32.0) * (9.0/5.0);
@@ -124,9 +128,9 @@ public class TemperatureConversion {
      * @param fromKelvin True if converting from Kelvin, false if converting from Celsius
      * @return Temperature in Fahrenheit
      */
-    static double toFahrenheit(double temp, boolean fromKelvin){
+    static double toFahrenheit(double temp, Bool fromKelvin){
         switch (fromKelvin) {
-            case true:
+            case TRUE:
                 return (temp - 273.15) * (9.0/5.0) + 32;
             default:
                 return (temp * (9.0/5.0)) + 32.0;

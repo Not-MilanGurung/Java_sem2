@@ -35,6 +35,7 @@ public class PersonCRUD2 {
 		catch (SQLException e){
 			e.printStackTrace();
 		}
+		scanner.close();
 	}
 
 	public void displayAll() {
